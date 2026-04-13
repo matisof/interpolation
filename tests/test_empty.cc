@@ -1,1 +1,5 @@
-int main(void) { return 0; }
+#include "Interpolation/interpolation.hh"
+int main(void)
+{
+   return 0;
+}
