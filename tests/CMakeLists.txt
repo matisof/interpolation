@@ -9,8 +9,8 @@ set(TEST_SOURCES
 
    test_simple_test.cc
    
-   # test_chebyshev.cc
-   # test_generic.cc
+   test_chebyshev.cc
+   test_generic.cc
 )
 
 foreach(TEST_SOURCE ${TEST_SOURCES})

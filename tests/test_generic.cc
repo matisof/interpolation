@@ -1,6 +1,7 @@
 #include "Interpolation/interpolation.hh"
 using namespace Interpolation;
 
+//only tests exp function
 double testfunction(double x)
 {
    return exp(2 * x);
@@ -29,6 +30,7 @@ int test_exp_function()
 
    const double p = 20;
    Generic::StandardGrid grid(equi_pts, p);
+   //equispace bad
 
    int errcode = 1;
 
@@ -127,3 +129,7 @@ int main()
    if (i != 0) return i;
    return 0;
 }
+
+//risultati di SBF migliori di FBF
+//StandardGrid_interpolation_chebyshev.dat. 
+// You can plot this file (using Gnuplot or Python) to see the error curves visually.

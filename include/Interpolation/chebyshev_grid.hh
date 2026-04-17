@@ -2,6 +2,11 @@
 
 #include "Interpolation/default.hh"
 
+//here choice of number of points è l'unica scelta da fare
+//perchè come si dispongono punti già scelto
+//e con chebyshev si usa quasi solamente la seconda forma baricentrica
+//  mentre con general molta più libertà
+
 namespace Interpolation
 {
 namespace Chebyshev

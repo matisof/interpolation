@@ -2,6 +2,8 @@
 
 #include "Interpolation/default.hh"
 
+//account for variability
+
 namespace Interpolation
 {
 
@@ -20,6 +22,10 @@ struct StandardGrid {
       FBF   = 1,
       SBF   = 2,
    };
+// to pass a value you have to write STRATEGY::NAIVE
+//verbose but transparent, to put only 0,1,2 magic numbers you forget what is (very bad)
+
+//two different flavor of constructor
 
    /**
     * @brief Construct a new Standard Grid object from an input vector
@@ -30,6 +36,7 @@ struct StandardGrid {
     * [-1, 1], they are appended.
     */
    StandardGrid(const vector_d &input);
+   //I give vector of numbers that are the points where I valuate function
 
    /**
     * @brief Construct a new Standard Grid object from an input routine
@@ -39,7 +46,12 @@ struct StandardGrid {
     * @param N The degree of the interpolating polynomial (total # of points = p+1)
     *
     * @note It expects that the lower bound is -1 and the upper bound +1
+    * if it gives me something that goes from -0.9 to 0.9 it will extend it
+    *it calls the function in first index: if it isn't minus 1 it will append it
     */
+    //cosntructor takes as input a function which takes two arguments and return a double
+    //the arguments the index of the grid and the size of the grid == degree of polinomial
+    //I need a function and number of degree of polinomial to interpolate
    StandardGrid(const std::function<double(size_t, size_t)> &fnc, size_t p);
 
    /**
@@ -54,6 +66,7 @@ struct StandardGrid {
     */
    double interpolate(double t, const vector_d &fj, size_t start, size_t end,
                       STRATEGY str = STRATEGY::FBF) const;
+                      //you specify already the strategy because FBF the best for generic grid
    /**
     * @brief Interpolate the derivative of a view of a vector on the grid
     *
@@ -80,6 +93,7 @@ struct StandardGrid {
     * @note This version takes the input vector, applies the derivative matrix,
     * and then calls the standard interpolation.
     */
+    //do not look at this
    double interpolate_der_v2(double t, const vector_d &fj, size_t start, size_t end,
                              STRATEGY str = STRATEGY::FBF) const;
 
